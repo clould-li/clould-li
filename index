@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>树匠 · Full-Stack Developer & Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf8;
+  --surface:#ffffff;
+  --ink:#1a1a1a;
+  --muted:#6b6b63;
+  --faint:#d4d4cc;
+  --green:#166534;
+  --green-light:#22c55e;
+  --green-soft:#f0fdf4;
+  --amber:#b45309;
+  --radius:12px;
+  --font-serif:'Noto Serif SC',serif;
+  --font-sans:'Noto Sans SC',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:80px 24px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-40%;right:-20%;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(34,197,94,.06) 0%, transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-10%;left:-10%;
+  width:400px;height:400px;
+  background:radial-gradient(circle, rgba(22,101,52,.04) 0%, transparent 70%);
+  border-radius:50%;
+}
+.hero-content{
+  position:relative;z-index:1;max-width:680px;text-align:center;
+  animation:fadeUp .8s cubic-bezier(.16,1,.3,1);
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.hero-tag{
+  display:inline-block;font-family:var(--font-mono);font-size:13px;
+  color:var(--green);background:var(--green-soft);
+  padding:6px 16px;border-radius:99px;margin-bottom:24px;
+  letter-spacing:1px;
+}
+.hero h1{
+  font-family:var(--font-serif);font-size:clamp(42px,7vw,72px);
+  font-weight:900;line-height:1.1;letter-spacing:-1px;
+  margin-bottom:16px;
+}
+.hero h1 .highlight{
+  background:linear-gradient(135deg, var(--green), #15803d);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:18px;color:var(--muted);max-width:480px;margin:0 auto 32px;
+}
+.hero-cta{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 28px;border-radius:99px;
+  font-family:var(--font-sans);font-size:15px;font-weight:500;
+  text-decoration:none;transition:all .25s ease;
+}
+.btn-primary{
+  background:var(--green);color:#fff;
+  box-shadow:0 4px 20px rgba(22,101,52,.2);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(22,101,52,.3)}
+.btn-outline{
+  border:1.5px solid var(--faint);color:var(--ink);
+}
+.btn-outline:hover{border-color:var(--green);color:var(--green)}
+
+/* Section */
+.section{
+  max-width:960px;margin:0 auto;padding:100px 24px;
+}
+.section-label{
+  font-family:var(--font-mono);font-size:12px;color:var(--green);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;
+}
+.section h2{
+  font-family:var(--font-serif);font-size:clamp(28px,4vw,40px);
+  font-weight:700;margin-bottom:48px;letter-spacing:-.5px;
+}
+
+/* Services */
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.service-card{
+  background:var(--surface);
+  border:1px solid var(--faint);
+  border-radius:var(--radius);
+  padding:32px 28px;
+  transition:all .3s ease;
+}
+.service-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,.06);
+  border-color:var(--green-light);
+}
+.service-icon{font-size:32px;margin-bottom:16px}
+.service-card h3{
+  font-family:var(--font-serif);font-size:20px;font-weight:700;
+  margin-bottom:8px;
+}
+.service-card p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* Tech */
+.tech-groups{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+.tech-group{
+  background:var(--surface);border:1px solid var(--faint);
+  border-radius:var(--radius);padding:28px;
+}
+.tech-group h3{
+  font-family:var(--font-serif);font-size:18px;font-weight:700;
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.tech-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tech-tag{
+  font-family:var(--font-mono);font-size:12px;
+  padding:4px 12px;border-radius:6px;
+  background:var(--green-soft);color:var(--green);
+  border:1px solid rgba(34,197,94,.15);
+}
+
+/* Projects */
+.projects-list{display:flex;flex-direction:column;gap:20px}
+.project-card{
+  display:flex;gap:24px;
+  background:var(--surface);border:1px solid var(--faint);
+  border-radius:var(--radius);padding:28px;
+  transition:all .3s ease;text-decoration:none;color:inherit;
+  align-items:center;
+}
+.project-card:hover{
+  transform:translateX(4px);
+  border-color:var(--green-light);
+  box-shadow:0 8px 30px rgba(0,0,0,.04);
+}
+.project-icon{
+  width:56px;height:56px;border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;flex-shrink:0;
+}
+.project-info{flex:1}
+.project-info h3{
+  font-family:var(--font-serif);font-size:18px;font-weight:700;margin-bottom:4px;
+}
+.project-info p{font-size:14px;color:var(--muted)}
+.project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.project-tags span{
+  font-size:11px;font-family:var(--font-mono);
+  padding:2px 8px;border-radius:4px;
+  background:#f4f4f0;color:var(--muted);
+}
+.project-arrow{color:var(--faint);font-size:20px;transition:transform .3s}
+.project-card:hover .project-arrow{transform:translateX(4px);color:var(--green)}
+
+/* CTA */
+.cta-section{
+  text-align:center;padding:120px 24px;
+  background:linear-gradient(180deg, transparent, var(--green-soft) 40%, transparent);
+}
+.cta-section h2{
+  font-family:var(--font-serif);font-size:clamp(28px,4vw,40px);
+  font-weight:700;margin-bottom:16px;
+}
+.cta-section p{color:var(--muted);margin-bottom:32px;font-size:16px}
+.cta-email{
+  font-family:var(--font-mono);font-size:20px;color:var(--green);
+  text-decoration:none;border-bottom:2px dashed var(--green-light);
+  transition:all .2s;
+}
+.cta-email:hover{border-bottom-style:solid}
+
+/* Footer */
+.footer{
+  text-align:center;padding:40px 24px;
+  font-size:13px;color:var(--muted);
+  border-top:1px solid var(--faint);
+}
+.footer a{color:var(--green);text-decoration:none}
+
+@media(max-width:640px){
+  .project-card{flex-direction:column;align-items:flex-start;gap:12px}
+  .hero h1{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Available for Hire</span>
+    <h1>树下写代码<br><span class="highlight">树上见作品</span></h1>
+    <p class="hero-sub">
+      全栈开发者 & 设计师 · 现居北京<br>
+      从品牌到产品，从设计到代码，一站式交付
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:hi@shuxia.ai" class="btn btn-primary">📬 聊聊你的项目</a>
+      <a href="#works" class="btn btn-outline">↓ 看看作品</a>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section">
+  <div class="section-label">What I Do</div>
+  <h2>我能为你做什么</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>UI / UX 设计</h3>
+      <p>从品牌 VI 到界面设计，Sketch & Figma 重度用户，像素级打磨每一个细节。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚛️</div>
+      <h3>前端开发</h3>
+      <p>React / Vue / Next.js 技术栈，组件化思维，性能与可维护性并重。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🖥️</div>
+      <h3>后端 & API</h3>
+      <p>Node.js / Python 后端开发，数据库设计，RESTful & GraphQL API。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3>AI 应用开发</h3>
+      <p>LLM / RAG / AI Agent 实战经验，帮你把 AI 能力落地到产品。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔌</div>
+      <h3>Sketch / Figma 插件</h3>
+      <p>定制设计工具插件，MCP Server 集成，让 AI 驱动你的设计工作流。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>小程序 & H5</h3>
+      <p>微信生态全流程开发，从注册到上线，跨越技术与平台的鸿沟。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tech -->
+<section class="section">
+  <div class="section-label">Tech Stack</div>
+  <h2>技术栈</h2>
+  <div class="tech-groups">
+    <div class="tech-group">
+      <h3>🎯 Frontend</h3>
+      <div class="tech-tags">
+        <span class="tech-tag">React</span><span class="tech-tag">Next.js</span>
+        <span class="tech-tag">Vue</span><span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">TailwindCSS</span><span class="tech-tag">Zustand</span>
+        <span class="tech-tag">Framer Motion</span>
+      </div>
+    </div>
+    <div class="tech-group">
+      <h3>⚙️ Backend</h3>
+      <div class="tech-tags">
+        <span class="tech-tag">Node.js</span><span class="tech-tag">Python</span>
+        <span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span>
+        <span class="tech-tag">Docker</span><span class="tech-tag">Prisma</span>
+        <span class="tech-tag">FastAPI</span>
+      </div>
+    </div>
+    <div class="tech-group">
+      <h3>🎨 Design</h3>
+      <div class="tech-tags">
+        <span class="tech-tag">Sketch</span><span class="tech-tag">Figma</span>
+        <span class="tech-tag">Photoshop</span><span class="tech-tag">Illustrator</span>
+        <span class="tech-tag">Principle</span><span class="tech-tag">After Effects</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section" id="works">
+  <div class="section-label">Featured Works</div>
+  <h2>作品精选</h2>
+  <div class="projects-list">
+    <a href="https://www.shuxia.ai" class="project-card" target="_blank">
+      <div class="project-icon" style="background:#f0fdf4">🌳</div>
+      <div class="project-info">
+        <h3>树下 AI</h3>
+        <p>个人品牌 & AI 产品平台，从命名、设计到开发全栈交付</p>
+        <div class="project-tags">
+          <span>Next.js</span><span>Tailwind</span><span>Vercel</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </a>
+    <div class="project-card">
+      <div class="project-icon" style="background:#eff6ff">🎨</div>
+      <div class="project-info">
+        <h3>Sketch AI Companion</h3>
+        <p>AI 驱动的 Sketch 设计助手插件，自然语言操控设计工具</p>
+        <div class="project-tags">
+          <span>React</span><span>Node.js</span><span>MCP</span><span>Sketch Plugin</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-card" style="opacity:.5">
+      <div class="project-icon" style="background:#f5f5f0">🚧</div>
+      <div class="project-info">
+        <h3>More coming soon…</h3>
+        <p>更多项目整理中，敬请期待</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>有想法？来树下聊聊 🌳</h2>
+  <p>独立开发者 · 远程友好 · 按项目或长期合作均可</p>
+  <a href="mailto:hi@shuxia.ai" class="cta-email">hi@shuxia.ai</a>
+</section>
+
+<footer class="footer">
+  © 2026 树匠 · Built with ☕️ in Beijing · <a href="https://github.com/clould-li">GitHub</a>
+</footer>
+
+</body>
+</html>
